@@ -40,3 +40,35 @@ def popHighest(plist):
             maxindex=index
         index+=1
     return plist.pop(maxindex)
+
+
+def sort(vlist):
+    length=len(vlist)
+    if length<2:
+        return vlist
+    half=length//2
+    half2=length-half
+    left=sort(vlist[0:half])
+    right=sort(vlist[half:length])
+    counter1=0
+    counter2=0
+    output=[]
+    while counter1+counter2<length:
+        if counter1<half and (counter2 == half2 or left[counter1][0]<right[counter2][0]):
+            output.append(left[counter1])
+            counter1+=1
+        else:
+            output.append(right[counter2])
+            counter2+=1
+    return output
+
+
+def sort1(plist):
+    valuedlist=[]
+    for item in plist:
+        valuedlist.append((item.value(),item))
+    list2=sort(valuedlist)
+    output=[]
+    for t in list2:
+        output.append(t[1])
+    return output
