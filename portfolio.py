@@ -26,3 +26,17 @@ class Portfolio:
         for k,v in self.__balance.items():
             total+=v*getPrice(k)
         return total
+
+def popHighest(plist):    
+    pvalues=[]
+    index=0
+    maxi=0
+    maxindex=-1
+    for item in plist:
+        currentvalue=item.value()
+        pvalues.append(currentvalue)
+        if currentvalue>maxi:
+            maxi=currentvalue
+            maxindex=index
+        index+=1
+    return plist.pop(maxindex)
